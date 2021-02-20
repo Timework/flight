@@ -1,0 +1,13 @@
+<h1>Your Booking</h1>
+To: <%= @booking.trip.to_airport.name %>
+From: <%= @booking.trip.from_airport.name %>
+Id: <%= @booking.trip.id %>
+Date: <%= @booking.trip.depart %>
+Passengers: <%= @booking.amount_passengers %>
+<% i = 1 %>
+<% @booking.passengers.each do |pass| %>
+<h2>Passenger <%= i %> </h2>
+<%= pass.name %>
+<%= pass.email%>
+<% i += 1 %>
+<% end %>

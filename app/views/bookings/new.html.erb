@@ -1,0 +1,25 @@
+<h1>New Booking</h1>
+ <%= form_with model: @booking do |f| %>
+ To: <%= @booking.trip.to_airport.name %>
+ From: <%= @booking.trip.from_airport.name %>
+ Id: <%= @booking.trip.id %>
+Date: <%= @booking.trip.depart %>
+Passengers: <%= @booking.amount_passengers %>
+<br>
+<%= f.hidden_field(:trip_id, value:@booking.trip.id) %>
+<%= f.hidden_field(:amount_passengers, value:@booking.amount_passengers) %>
+<% i = 1 %>
+<% @booking.passengers.each do |pass| %>
+<h2>Passenger <%= i %></h2>
+<%= f.fields_for :passengers, pass do |p| %>
+<%= p.label "Name" %>
+<%= p.text_field :name %>
+<br>
+<%= p.label "Email" %>
+<%= p.email_field :email %>
+<br>
+<% end %>
+<% i += 1%>
+<% end %>
+<%= f.submit %>
+ <% end %>

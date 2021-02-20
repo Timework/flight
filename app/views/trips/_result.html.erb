@@ -1,0 +1,12 @@
+<% if @results %>
+<h2> Results </h2>
+<%= form_with(url: new_booking_path, method: :get) do |f| %>
+<% @results.each do |result| %>
+<%= f.radio_button(:trip_id, result.id)%>
+<%= f.label("#{result.from_airport.name} to #{result.to_airport.name} at #{result.depart} duration: #{result.duration}")%>
+<br>
+<% end %>
+<%= f.hidden_field(:amount_passengers, value:@pass) %>
+<%= f.submit %>
+<% end %>
+<% end %>

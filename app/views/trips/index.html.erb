@@ -1,0 +1,12 @@
+<h1>All Flights</h1>
+
+
+<%= form_with( url: trips_path, method: :get) do |f| %>
+From: <%= f.select(:from_airport, @airports) %><br>
+To: <%= f.select(:to_airport, @airports) %><br>
+Time: <%= f.select(:depart, @flight_times) %><br>
+Passengers: <%= f.select(:passengers, @passengers) %><br>
+<%= f.submit%>
+<% end %>
+
+<%= render 'result' %>
